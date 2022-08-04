@@ -67,6 +67,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.occupation).toBe('Retired alcoholic');
   });
+  it('#DELETE /gtas/:id should delete a gta character', async () => {
+    const resp = await request(app).delete('/gtas/1');
+    expect(resp.status).toBe(200);
+
+    const gtaResp = await request(app).get('/gtas/1');
+    expect(gtaResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });

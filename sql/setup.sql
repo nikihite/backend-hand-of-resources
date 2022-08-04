@@ -1,6 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS gtas;
+DROP TABLE IF EXISTS planets;
 
 CREATE TABLE gtas (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -31,4 +32,55 @@ VALUES
         'Lamar',
         'Davis',
         'Deluxe Premium Motorsport Employee'
+    );
+
+CREATE TABLE planets (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
+    sun VARCHAR NOT NULL
+);
+
+INSERT INTO
+    planets (name, color, sun)
+VALUES
+    (
+        'Mercury',
+        'grey',
+        'closest to the sun'
+    ),
+    (
+        'Venus',
+        'brown, grey',
+        'second from the sun'
+    ),
+    (
+        'Earth',
+        'blue, brown, green, white',
+        'third from the sun'
+    ),
+    (
+        'Mars',
+        'red, brown, tan',
+        'fourth from the sun'
+    ),
+    (
+        'Jupiter',
+        'brown, orange, tan',
+        'fifth from the sun'
+    ),
+    (
+        'Saturn',
+        'gold, brown, blue, grey',
+        'sixth from the sun'
+    ),
+    (
+        'Uranus',
+        'blue, green',
+        'seventh from the sun'
+    ),
+    (
+        'Neptune',
+        'blue',
+        'eigth from the sun'
     );
