@@ -54,11 +54,18 @@ describe('backend-express-template routes', () => {
       occupation: 'Technology and computer expert/ experienced robber',
     };
     const resp = await request(app).post('/gtas').send(newGta);
-    // expect(resp.status).toBe(200);
+    expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
       ...newGta,
     });
+  });
+  it('#PUT /gtas/:id should update an existing gta character', async () => {
+    const resp = await request(app).put('/gtas/1').send({
+      occupation: 'Retired alcoholic',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.occupation).toBe('Retired alcoholic');
   });
   afterAll(() => {
     pool.end();
