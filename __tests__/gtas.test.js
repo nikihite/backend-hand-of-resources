@@ -47,6 +47,19 @@ describe('backend-express-template routes', () => {
       occupation: 'Gang member, Repo man',
     });
   });
+  it('#POST /gtas should create a new gta character', async () => {
+    const newGta = {
+      first_name: 'Lester',
+      last_name: 'Crest',
+      occupation: 'Technology and computer expert/ experienced robber',
+    };
+    const resp = await request(app).post('/gtas').send(newGta);
+    // expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newGta,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
