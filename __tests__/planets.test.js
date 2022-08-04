@@ -22,6 +22,17 @@ describe('backend-express-template routes', () => {
     ])
     );
   });
+  it('#GET planets/:id should return a single planet', async () => {
+    const resp = await request(app).get('/planets/2');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: '2',
+      name: 'Venus',
+      color: 'brown, grey',
+      sun: 'second from the sun',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
