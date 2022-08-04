@@ -32,6 +32,19 @@ describe('backend-express-template routes', () => {
       sun: 'second from the sun',
     });
   });
+  it('#POST /planets should create a new planet', async () => {
+    const newPlanet = {
+      name: 'Niki',
+      color: 'pink with sparkles',
+      sun: 'the other side',
+    };
+    const resp = await request(app).post('/planets').send(newPlanet);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPlanet,
+    });
+  });
 
   afterAll(() => {
     pool.end();
