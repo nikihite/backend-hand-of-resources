@@ -34,6 +34,16 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
+  it('#GET sodas/:id should return a single soda', async () => {
+    const resp = await request(app).get('/shapes/2');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: '2',
+      name: 'Pentagon',
+      sides: '5',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
