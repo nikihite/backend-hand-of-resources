@@ -57,6 +57,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /shapes/:id should update an existing shape', async () => {
+    const resp = await request(app).put('/shapes/1').send({
+      sides: '0',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.sides).toBe('0');
+  });
+
   afterAll(() => {
     pool.end();
   });
