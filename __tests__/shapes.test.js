@@ -65,6 +65,14 @@ describe('backend-express-template routes', () => {
     expect(resp.body.sides).toBe('0');
   });
 
+  it('#DELETE /shapes/:id should delete a shape', async () => {
+    const resp = await request(app).delete('/shapes/1');
+    expect(resp.status).toBe(200);
+
+    const shapeResp = await request(app).get('/shapes/1');
+    expect(shapeResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
