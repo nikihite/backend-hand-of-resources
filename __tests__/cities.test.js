@@ -72,6 +72,14 @@ describe('backend-express-template routes', () => {
     expect(resp.body.population).toBe('5');
   });
 
+  it('#DELETE /cities/:id should delete a city', async () => {
+    const resp = await request(app).delete('/cities/1');
+    expect(resp.status).toBe(200);
+
+    const cityResp = await request(app).get('/cities/1');
+    expect(cityResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
