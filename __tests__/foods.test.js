@@ -37,6 +37,29 @@ describe('backend-express-template routes', () => {
       },
     ]);
   });
+
+  it('#GET foods/:id should return a single food', async () => {
+    const resp = await request(app).get('/foods/2');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: '2',
+      name: 'Apple',
+      color: 'red',
+      type: 'fruit',
+    });
+  });
+
+  it('#GET foods/:id should return a single food', async () => {
+    const resp = await request(app).get('/foods/2');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: '2',
+      name: 'Apple',
+      color: 'red',
+      type: 'fruit',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
