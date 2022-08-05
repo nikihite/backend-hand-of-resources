@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS gtas;
 DROP TABLE IF EXISTS planets;
 DROP TABLE IF EXISTS shapes;
 DROP TABLE IF EXISTS foods;
+DROP TABLE IF EXISTS cities;
 
 CREATE TABLE gtas (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -113,7 +114,7 @@ VALUES
         '6'
     );
 
-        CREATE TABLE foods (
+    CREATE TABLE foods (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     color VARCHAR NOT NULL,
@@ -142,4 +143,35 @@ VALUES
         'Mac n Cheese',
         'yellow',
         'pasta'
+    );
+
+    CREATE TABLE cities (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    city VARCHAR NOT NULL,
+    country VARCHAR NOT NULL,
+    population VARCHAR NOT NULL
+);
+
+INSERT INTO
+    cities (city, country, population)
+VALUES
+    (
+        'Tokyo',
+        'Japan',
+        '13,515,271'
+    ),
+    (
+        'Beijing',
+        'China',
+        '21,893,095'
+    ),
+    (
+        'New York',
+        'United States',
+        '8,804,190'
+    ),
+    (
+        'Paris',
+        'France',
+        '2,148,271'
     );
