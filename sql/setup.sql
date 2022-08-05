@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS gtas;
 DROP TABLE IF EXISTS planets;
 DROP TABLE IF EXISTS shapes;
+DROP TABLE IF EXISTS foods;
 
 CREATE TABLE gtas (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -110,4 +111,35 @@ VALUES
     (
         'Hexagon',
         '6'
+    );
+
+        CREATE TABLE foods (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
+    type VARCHAR NOT NULL
+);
+
+INSERT INTO
+    foods (name, color, type)
+VALUES
+    (
+        'Carrot',
+        'orange',
+        'vegetable'
+    ),
+    (
+        'Apple',
+        'red',
+        'fruit'
+    ),
+    (
+        'Almond',
+        'brown',
+        'nut'
+    ),
+    (
+        'Mac n Cheese',
+        'yellow',
+        'pasta'
     );
