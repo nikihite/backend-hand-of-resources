@@ -64,6 +64,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /cities/:id should update an existing city', async () => {
+    const resp = await request(app).put('/cities/1').send({
+      population: '5',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.population).toBe('5');
+  });
+
   afterAll(() => {
     pool.end();
   });
