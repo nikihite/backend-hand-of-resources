@@ -44,6 +44,19 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#POST /shapes should create a new shape', async () => {
+    const newShape = {
+      name: 'Octagon',
+      sides: '8',
+    };
+    const resp = await request(app).post('/shapes').send(newShape);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newShape,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
