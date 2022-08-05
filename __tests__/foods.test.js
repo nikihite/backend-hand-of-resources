@@ -60,6 +60,20 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#POST /foods should create a new food', async () => {
+    const newFood = {
+      name: 'Strawberry',
+      color: 'red',
+      type: 'fruit',
+    };
+    const resp = await request(app).post('/foods').send(newFood);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newFood,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
