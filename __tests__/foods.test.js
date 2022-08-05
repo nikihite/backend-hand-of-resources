@@ -74,6 +74,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /foods/:id should update an existing food', async () => {
+    const resp = await request(app).put('/foods/1').send({
+      color: 'pink',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.color).toBe('pink');
+  });
+
   afterAll(() => {
     pool.end();
   });
