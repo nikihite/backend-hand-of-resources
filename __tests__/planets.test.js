@@ -52,7 +52,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.color).toBe('pink, purple');
   });
+  it('#DELETE /planets/:id should delete a planet', async () => {
+    const resp = await request(app).delete('/planets/1');
+    expect(resp.status).toBe(200);
 
+    const planetResp = await request(app).get('/planets/1');
+    expect(planetResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
