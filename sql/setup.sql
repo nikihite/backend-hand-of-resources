@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS gtas;
 DROP TABLE IF EXISTS planets;
+DROP TABLE IF EXISTS shapes;
 
 CREATE TABLE gtas (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -83,4 +84,30 @@ VALUES
         'Neptune',
         'blue',
         'eigth from the sun'
+    );
+
+    CREATE TABLE shapes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    sides VARCHAR NOT NULL
+);
+
+INSERT INTO
+    shapes (name, sides)
+VALUES
+    (
+        'Triangle',
+        '3'
+    ),
+    (
+        'Pentagon',
+        '5'
+    ),
+    (
+        'Square',
+        '4'
+    ),
+    (
+        'Hexagon',
+        '6'
     );
