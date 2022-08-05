@@ -82,6 +82,14 @@ describe('backend-express-template routes', () => {
     expect(resp.body.color).toBe('pink');
   });
 
+  it('#DELETE /foods/:id should delete a food', async () => {
+    const resp = await request(app).delete('/foods/1');
+    expect(resp.status).toBe(200);
+
+    const foodResp = await request(app).get('/foods/1');
+    expect(foodResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
