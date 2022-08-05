@@ -45,6 +45,13 @@ describe('backend-express-template routes', () => {
       ...newPlanet,
     });
   });
+  it('#PUT /planets/:id should update an existing planet', async () => {
+    const resp = await request(app).put('/planets/1').send({
+      color: 'pink, purple',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.color).toBe('pink, purple');
+  });
 
   afterAll(() => {
     pool.end();
